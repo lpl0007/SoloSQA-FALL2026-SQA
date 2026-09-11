@@ -48,7 +48,7 @@ def random_value(depth=0):
 
 def random_string():
     characters = string.ascii_letters + string.digits + "_-. /:@"
-    return "".join(random.choice(characters) for _ in range(random.randint(0, 15)))
+    return "".join(random.choice(characters) for _ in range(random.randint(0, 50)))
 
 
 def run_fuzz_test(name, function, make_input):
