@@ -51,6 +51,20 @@ def random_string():
     return "".join(random.choice(characters) for _ in range(random.randint(0, 50)))
 
 
+def random_path_value():
+    values = [
+        None,
+        True,
+        False,
+        0,
+        1,
+        [],
+        {},
+        random_string(),
+    ]
+    return random.choice(values)
+
+
 def run_fuzz_test(name, function, make_input):
     errors = []
 
@@ -107,13 +121,13 @@ def main():
     results["parser.checkIfWeirdYAML"] = run_fuzz_test(
         "parser.checkIfWeirdYAML",
         parser.checkIfWeirdYAML,
-        lambda: (random_string(),),
+        lambda: (random_path_value(),),
     )
 
     results["parser.checkIfValidHelm"] = run_fuzz_test(
         "parser.checkIfValidHelm",
         parser.checkIfValidHelm,
-        lambda: (random_string(),),
+        lambda: (random_path_value(),),
     )
 
     results["scanner.isValidUserName"] = run_fuzz_test(
