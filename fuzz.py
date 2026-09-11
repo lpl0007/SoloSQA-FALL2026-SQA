@@ -8,7 +8,7 @@ import parser
 import scanner
 
 
-FUZZ_RUNS = 100
+FUZZ_RUNS = 1000
 random.seed(5710)
 
 
@@ -157,6 +157,7 @@ def main():
     total_errors = sum(len(errors) for errors in results.values())
     print("\nFuzzing complete.")
     print("Functions tested:", len(results))
+    print("Total executions:", len(results) * FUZZ_RUNS)
     print("Total exceptions discovered:", total_errors)
 
 
